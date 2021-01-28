@@ -90,7 +90,7 @@ function addMember() {
 }
 
 function completeProfile() {
-    console.dir(teamProfile);
+    render(teamProfile);
 }
 
 function addEngineer() {
