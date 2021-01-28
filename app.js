@@ -33,3 +33,46 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+const teamProfile = [];
+
+function teamProfileBuilder() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "Hello Team Manager, please enter your name"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Please enter your ID."
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Please enter your Email."
+            },
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "Please enter your office number."
+            }
+        ])
+        .then(data => {
+            let manager = new Manager(data.name, data.id, data.email, data.officeNumber);
+
+        })
+}
+
+function addMember() {
+    inquirer
+        .prompt([
+            {
+                type: "list",
+                name: "member",
+                message: "Select another team member to add, or complete team.",
+                choices: ["Engineer", "Intern", "Team Complete"]
+            }
+        ])
+}
