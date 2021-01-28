@@ -61,7 +61,8 @@ function teamProfileBuilder() {
         ])
         .then(data => {
             let manager = new Manager(data.name, data.id, data.email, data.officeNumber);
-
+            teamProfile.push(manager);
+            addMember();
         })
 }
 
@@ -75,4 +76,83 @@ function addMember() {
                 choices: ["Engineer", "Intern", "Team Complete"]
             }
         ])
+        .then(choice => {
+            if (choice.member === "Engineer") {
+                addEngineer();
+            }
+            else if (choice.member === "Intern") {
+                addIntern();
+            }
+            else {
+                completeProfile();
+            }
+        })
 }
+
+function completeProfile() {
+    console.dir(teamProfile);
+}
+
+function addEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "Please enter Engineer's name"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Please enter Engineer's ID."
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Please enter Engineer's Email."
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "Please enter Engineer's github username."
+            }
+        ])
+        .then(data => {
+            let engineer = new Engineer(data.name, data.id, data.email, data.github);
+            teamProfile.push(engineer);
+            addMember();
+        })
+}
+
+function addIntern() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "Please enter Intern's name"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Please enter Intern's ID."
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Please enter Intern's Email."
+            },
+            {
+                type: "input",
+                name: "school",
+                message: "Please enter Intern's School name."
+            }
+        ])
+        .then(data => {
+            let intern = new Intern(data.name, data.id, data.email, data.school);
+            teamProfile.push(intern);
+            addMember();
+        })
+}
+
+teamProfileBuilder();
