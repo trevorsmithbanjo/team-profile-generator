@@ -1,0 +1,17 @@
+body {
+    font-family: 'Assistant', sans-serif;
+    color: dimgray;
+    background-color: ghostwhite;
+}
+
+.my-heading {
+    background-color: lightblue;
+}
+
+.my-listgroup {
+    color: black;
+}
+
+a {
+    color: firebrick;
+}
